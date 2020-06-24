@@ -1,0 +1,6 @@
+Training Time:  429.8768928050995
+Hyperparameters: 
+ learning rate: 0.002 
+ epochs 50000
+Train loss value:  6.754695641575381e-05
+Test loss value:  0.0057595111429691315
