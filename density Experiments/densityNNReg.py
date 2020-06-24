@@ -6,7 +6,7 @@ import torch
 import sys
 sys.path.append("../utils/")
 
-from NNmodels import  baseNet0, resBlockNet0, resBlockNet1, train
+from NNmodels import  linearNet, baseNet0, resBlockNet0, resBlockNet1, train
 
 """
     This files trains a NN regression model to predict polymer densities
@@ -53,8 +53,9 @@ epochs = 50000
 alpha = 0.02
 
 #model = baseNet0(numFeatures)
-model = resBlockNet0(numFeatures)
+#model = resBlockNet0(numFeatures)
 #model = resBlockNet1(numFeatures)
+model = linearNet(numFeatures)
 
 
 lossManager, trainTime = train( model, XTrain, yTrain, epochs, alpha)
@@ -89,7 +90,6 @@ plt.close()
 
 
 # Writing output to file
-
 np.set_printoptions(threshold=sys.maxsize, linewidth= sys.maxsize)
 #np.set_printoptions(threshold=sys.maxsize )
 
