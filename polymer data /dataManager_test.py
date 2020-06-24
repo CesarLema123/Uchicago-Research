@@ -1,4 +1,4 @@
-from  polymerDataManager import PolymerDataManager
+from  dataManagerResources import PolymerDataManager
 import matplotlib.pyplot as plt
 import numpy as np
 from rdkit import DataStructs
@@ -44,7 +44,7 @@ matrix = dataManager.getCorrelationMatrix()
 print("Data correlation matrix: \n",matrix, "\n")
 
 # quantitative description of missing values
-dataManager.MissingData()
+dataManager.missingData()
 
 # save current data in dataManager
 dataManager.saveAsCSV("data/example.csv")

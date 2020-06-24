@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from rdkit import Chem
 from rdkit.Chem import Descriptors
+from rdkit.Chem.Fingerprints import FingerprintMols
+
 
 '''
     This file conatins a class for managing polymer data
@@ -54,8 +56,7 @@ class PolymerDataManager:
         
     Methods:
         getSmilesIdentifier( polymer_identifier):
-            Converts polymer name style identifier to smiles format. Standarizes ( polymer name or smiles ) identifier to
-            only smiles format.
+            Converts polymer name style identifier to smiles format. Standarizes ( polymer name or smiles ) identifier to only smiles format.
         
         getPolymerDescriptors(polymer_identifier, descriptor_list):
             Returns a dataframe with descriptor values for a single polymer
@@ -63,8 +64,9 @@ class PolymerDataManager:
         getCorrelationMatrix(method = "pearson"):
             Returns a correlation matrix of properties in property_list based on given method for correlation
         
-        getDescriptors():
-        
+        getRDKFingerprints():
+            Returns a N (number of polymers in data) row with n (number of bits per fingerprint) column matrix.
+                 
         addDescriptors(descriptor_list):
             Adds a column of descriptor values for each descriptor in descriptor_list to the class DataFrame.
         
@@ -84,7 +86,7 @@ class PolymerDataManager:
         plotPropertyCorrelations(property_list):
             Plot a correlation heatmap of property_list based on Pearson correlation
         
-        MissingData():
+        missingData():
             Plots histogram and prints quantitative data on missing/nan values for the properties in the class dataframe
         
         saveAsCSV(filepath):
@@ -113,7 +115,8 @@ class PolymerDataManager:
         properties = "Properties and Descriptors in data are: \n"
         for elem in self.df.columns:
             properties += " " + elem + "\n"
-        return properties
+        numPolymer = "Number of Polymers are: \n" + str(len(self.df)) +"\n"
+        return properties + numPolymer
         
     def getSmilesIdentifier(self, polymer_identifier):
         """ Converts polymer name style identifier to smiles format. Standarizes ( polymer name or smiles ) identifier to only smiles format.
@@ -139,6 +142,36 @@ class PolymerDataManager:
         return
     """
     
+    def getFingerprints(self,type = "RDK", fpSize = 2048):
+        """ Returns a N (number of polymers in data) row with n (number of bits per fingerprint) column matrix. Assumes smiles identifies for polymer is already in rawdata.
+        
+        """
+        if self.propertyExistence(["smiles"]):
+            if type == "RDK":
+                # --------- complete ----------------
+                smiles = self.df["smiles"].to_numpy()[self.df["smiles"].isna() == False]
+                returnData = np.zeros((len(smiles),fpSize))
+                for ind in range( len(smiles) ):
+                    returnData[ind] =  np.array(list(Chem.RDKFingerprint(Chem.MolFromSmiles(smiles[ind])).ToBitString()))
+                return returnData
+            elif type == "fpModule":
+                # --------- Incomplete ----------------
+                polyData = self.df[["smiles"]]
+                polyData["identifier"] = range(0,len(self.df.index))
+                fpData = FingerprintMols.FingerprintsFromSmiles(polyData.to_numpy(),1,0)
+                retData = np.zeros((len(fpData),len(list(fpData[0][1].ToBitString()))))
+
+                for i in range(len(retData)):
+                    print("----: ",len(list(fpData[i][1].ToBitString())) )
+                    #retData[i] = np.array(list(fpData[i][1].ToBitString()))
+                return retData
+            else:
+                raise KeyError("Your input did not match any available finger print types")
+        else:
+            return None
+        
+            
+            
     def getPolymerDescriptors(self, polymer_identifier, descriptor_list):
         """ returns a dataframe with descriptor values for a single polymer
         
@@ -158,7 +191,7 @@ class PolymerDataManager:
         #single_row_df.set_index(pd.Index([smiles_indentifier])], inplace=True)              #set index of new dataframe as the unique name of chemical
 
         return single_row_df
-
+    
     def addDescriptors(self, descriptor_list):
         """ Adds a column of descriptor values for each descriptor in descriptor_list to the class DataFrame.
         
@@ -184,17 +217,20 @@ class PolymerDataManager:
         
         Parameters:
             property_list: [String], List of properties
-
+            
+        Return:
+            Returns true if either property was added or already present other wise rasies error.
         """
-        
+
         try:
             for prop in property_list:
                 if prop not in list(self.df):
                     self.addDescriptors([prop])
+            return True
         except:
             raise KeyError("One or multiple of your input properties either do not match any existing\
                 thermo-physical properties in dx.df or property does not match supported chemical descriptors")
-        return
+            return False
         
     def plotProperties(self, property_x=None, property_y=None):
         """ Plot a scatterplot of two properties against each other
@@ -270,7 +306,7 @@ class PolymerDataManager:
         cMatrix = self.df.corr(method= "pearson").to_numpy()
         return cMatrix
 
-    def MissingData(self):
+    def missingData(self):
         """ Plots histogram and prints quantitative data on missing/nan values for the properties in the class dataframe
         
         """
