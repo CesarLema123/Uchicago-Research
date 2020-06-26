@@ -7,33 +7,53 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
-from loss_helper import LossManager
+from lossHelper import LossManager
+
 """
-This file contains ResNets implementations for Regression
+    This file contains Different NN architectures for Regression
 """
-    
-class ControlNet0(nn.Module):
+
+class linearNet(nn.Module):
+    """ Linear reg NN
+
+    Architecture:
+        nueron w/ no activation
     """
+    def __init__(self, numFeatures):
+        super(linearNet, self).__init__()
+        self.numFeatures = numFeatures
+        
+        self.fc1 = nn.Linear(self.numFeatures, 1)
+
+    def forward(self, x):
+        x = self.fc1(x)
+        return x
+        
+        
+class baseNet0(nn.Module):
+    """ NN with simple FNN architecure
+    
     Architecture:
         1x1x10x1x1x10x1
     """
-    def __init__(self):
-        super(ControlNet0, self).__init__()
+    def __init__(self, numFeatures):
+        super(baseNet0, self).__init__()
+        self.numFeatures = numFeatures
         
-        self.fc1 = nn.Linear(1, 1)
-        self.fc2 = nn.Linear(1, 10)
-        self.fc3 = nn.Linear(10, 1)
-        self.fc4 = nn.Linear(1, 1)
-        self.fc5 = nn.Linear(1, 10)
-        self.fc6 = nn.Linear(10, 1)
+        self.fc1 = nn.Linear(self.numFeatures, 10)
+        self.fc2 = nn.Linear(10, 10)
+        self.fc3 = nn.Linear(10, 10)
+        self.fc4 = nn.Linear(10, 1)
+        #self.fc5 = nn.Linear(1, 10)
+        #self.fc6 = nn.Linear(10, 1)
 
     def forward(self, x):
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
         x = F.relu(self.fc3(x))
-        x = F.relu(self.fc4(x))
-        x = F.relu(self.fc5(x))
-        x = self.fc6(x)
+        #x = F.relu(self.fc4(x))
+        #x = F.relu(self.fc5(x))
+        x = self.fc4(x)
         return x
 
             
@@ -41,6 +61,7 @@ class ControlNet1(nn.Module):
     """
     Architecture:
         1x10x10x1x10x10x1
+    #-------- OLD NOT EDITTED ---------------
     """
     def __init__(self,numNuerons):
         super(ControlNet1, self).__init__()
@@ -67,6 +88,7 @@ class ControlNet2(nn.Module):
     """
     Architecture:
         1x10x10x1x10x10x1
+    #-------- OLD NOT EDITTED ---------------
     """
     def __init__(self):
         super(ControlNet2, self).__init__()
@@ -102,56 +124,74 @@ class ControlNet2(nn.Module):
         
 
 
-class Net0(nn.Module):
-    """
+class resBlockNet0(nn.Module):
+    """ NN with residual blocks which directly output value
+    
     Architecture:
-        1xRes[1x10x1]xRes[1x10x1]                 # Res[...(input to next resBlock)]
+        Nx1xRes[10x10x1]xRes[10x10x1]                 # Res[...(input to next resBlock)]
     Try:
         1xRes[10x10x1]xRes[10x10x1]
     """
-    def __init__(self):
-        super(Net0, self).__init__()
-        
-        self.fc1 = nn.Linear(1, 1)
-        self.fc2 = nn.Linear(1, 10)
-        self.fc3 = nn.Linear(10, 1)
-        self.fc4 = nn.Linear(1, 1)
-        self.fc5 = nn.Linear(1, 10)
-        self.fc6 = nn.Linear(10, 1)
+    def __init__(self, numFeatures):
+        super(resBlockNet0, self).__init__()
+        self.numFeatures = numFeatures
 
-    def forward(self, x1):              #xn are inputs to resBlock n
+        # Res block layers
+        self.fc1 = nn.Linear(self.numFeatures, 1)
+        self.fc2 = nn.Linear(1, 10)
+        self.fc3 = nn.Linear(10, 10)
+        self.fc4 = nn.Linear(10, 1)
+        self.fc5 = nn.Linear(1, 10)
+        self.fc6 = nn.Linear(10, 10)
+        self.fc7 = nn.Linear(10, 1)
+        
+
+
+    def forward(self, x):              #xn are inputs to resBlock n
+        
+        x1 = F.relu(self.fc1(x))                # N->1
+        
         #resBlock1
-        x = F.relu(self.fc1(x1))                # 1->1
-        x = F.relu(self.fc2(x))                # 1->10
-        x2 = F.relu(self.fc3(x)) + x1           # 10->1
+        x = F.relu(self.fc2(x1))                # 1->10
+        x = F.relu(self.fc3(x))                # 10->10
+        x2 = F.relu(self.fc4(x)) + x1           # 10->1
         #resBlock2
-        x = F.relu(self.fc4(x2))                # 1->1
-        x = F.relu(self.fc5(x))                 # 1->10
-        x3 = self.fc6(x) + x2                   # 10->1
+        x = F.relu(self.fc5(x2))                 # 1->10
+        x = F.relu(self.fc6(x))                # 10->10
+        x3 = self.fc7(x) + x2                   # 10->1
+          
         return x3
     
     def loss(self,y,basis):
-        invValuesSum = torch.sum(y**(-1))
 
-        return torch.sum(torch.mv(basis,y.reshape(-1))) + invValuesSum
+        return
         
 
 
 
-class Net1(nn.Module):
-    """
+class resBlockNet1(nn.Module):
+    """ NN with residual blocks with a FNN block that gives output value
+    
     Architecture:
         1xRes[10x10x1]xRes[10x10x1]                 # Res[...(input to next resBlock)]
     """
-    def __init__(self):
-        super(Net1, self).__init__()
-        
-        self.fc1 = nn.Linear(1, 10)
+    def __init__(self, numFeatures):
+        super(resBlockNet1, self).__init__()
+        self.numFeatures = numFeatures
+
+        # Res block layers
+        self.fc1 = nn.Linear(self.numFeatures, 10)
         self.fc2 = nn.Linear(10, 10)
-        self.fc3 = nn.Linear(10, 1)
-        self.fc4 = nn.Linear(1, 10)
+        self.fc3 = nn.Linear(10, self.numFeatures)
+        self.fc4 = nn.Linear(self.numFeatures, 10)
         self.fc5 = nn.Linear(10, 10)
-        self.fc6 = nn.Linear(10, 1)
+        self.fc6 = nn.Linear(10, self.numFeatures)
+        
+        # MLP layers
+        self.fc7 = nn.Linear(self.numFeatures, 10)
+        self.fc8 = nn.Linear(10, 10)
+        self.fc9 = nn.Linear(10, 1)
+
 
     def forward(self, x1):              #xn are inputs to resBlock n
         #resBlock1
@@ -162,7 +202,13 @@ class Net1(nn.Module):
         x = F.relu(self.fc4(x2))                # 1->1
         x = F.relu(self.fc5(x))                 # 1->10
         x3 = self.fc6(x) + x2                   # 10->1
-        return x3
+        
+        #MLP layers
+        x = F.relu(self.fc7(x3))
+        x = F.relu(self.fc8(x))
+        x = F.relu(self.fc9(x))
+        
+        return x
 
 
 
@@ -170,6 +216,8 @@ class Net2(nn.Module):
     """
     Architecture:
         1xRes[10x10x1]xRes[10x10x1]xRes[10x10x1]xRes[10x10x1]                 # Res[...(input to next resBlock)]
+    #-------- OLD NOT EDITTED ---------------
+
     """
     def __init__(self):
         super(Net2, self).__init__()
@@ -218,6 +266,8 @@ class Net3(nn.Module):
     """
     Architecture:
         1xRes[10x10x1]xRes[10x10x1]xRes[10x10x1]xRes[10x10x1]xRes[10x10x1]xRes[10x10x1]                 #
+    #-------- OLD NOT EDITTED ---------------
+
     """
     def __init__(self):
         super(Net3, self).__init__()
@@ -277,6 +327,7 @@ class Net3(nn.Module):
 
 
 def train(net, X, y, epochs, alpha):            # training using MSE loss and batch GD optimizer
+    # add functionality so that this can take a numpy nd aray, check type then convert if needed
     startTime = time.time()                                     # recording train start time
     lossManager = LossManager()                                 # initailizing loss manager
     criterion = nn.MSELoss()

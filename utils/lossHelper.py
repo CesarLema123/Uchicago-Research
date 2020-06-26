@@ -3,7 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
     
 """
-    Classes for managing loss of a NN during training and testing
+    Classes for managing loss of a NN during training and testing.
+
 """
     
 class LossCollector():
