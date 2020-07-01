@@ -44,7 +44,7 @@ for i in range(len(polymerTypes)):                                          # co
 # ----- Save clean data to np file: ------
 cleanDataFilename = "CSIROData(clean)"                                        # data filename to save clean data
 dataDictionary = {}                                                           # dictionary with keys as gas
-for i in range(3 + len(gasLabels[3:17])):
+for i in range(3 + len(gasLabels[3:18])):
     dataDictionary[gasLabels[i]] = cleanData[i][:,[0,1,2,i]]
 
 print(type(dataDictionary))
@@ -62,10 +62,13 @@ print("------ Data available --------: \n",file = outputFile)
 print("The clean gas permeation data is saved as a dictionary with keys given by the gas name. The values are an numpy array with columns including the polymer type, brief description, polymer, data values. The dictionary is at \n\n                                 %s.npy \n\n"%(cleanDataFilename),file = outputFile)
 
 
-print("------ Polymer type data --------: \n\nNumber of polymerTypes: %g \n"%(len(polymerTypes)) ,file = outputFile)
+print("------ Polymer type data --------: \n\nNumber of polymerTypes: %g \n(Note: gases are ordered as He, H2, O2, N2, CO2, CH4, C2H4, C2H6, C3H6, C3H8, C4H8,  n-C4H1, CF4, C2F6, C3F8 )\n"%(len(polymerTypes)) ,file = outputFile)
 for i in range(len(dataForPolymerType)):                            # write about polymer type data
-    numberGasPValues = np.sum(pd.notna (dataForPolymerType[i][:,3:17]))
-    print( "Polymer Type: %s \n    Number of Polymers: %i \n    Total Number of gas permeation values %i \n\n"%(polymerTypes[i], dataForPolymerType[i].shape[0], numberGasPValues),file = outputFile)
+    numberGasPValues = np.sum(pd.notna (dataForPolymerType[i][:,3:18]))
+    totalValuesPerGas = np.sum( pd.notna (dataForPolymerType[i][:,3:18]),axis = 0)  # in same order ad original data
+    gasWithHighestNumValuesIndex = np.argmax( totalValuesPerGas )
+    numberOfValues = totalValuesPerGas[gasWithHighestNumValuesIndex  ]
+    print( "Polymer Type: %s \n    Number of Polymers: %i \n    Total Number of gas permeation values: %i \n    Total values per gas (ordered as in data): %s \n    Gas with highest number of permeation values: %s \n    Number of values: %i \n\n"%(polymerTypes[i], dataForPolymerType[i].shape[0], numberGasPValues, np.array2string(totalValuesPerGas) , gasLabels[3+gasWithHighestNumValuesIndex], numberOfValues),file = outputFile)
     
 print("------- Gas data ---------: \n",file = outputFile)
 for i in range(len(cleanData)):                                     # write about values for each gas

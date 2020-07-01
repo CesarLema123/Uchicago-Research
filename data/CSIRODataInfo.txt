@@ -8,165 +8,262 @@ The clean gas permeation data is saved as a dictionary with keys given by the ga
 ------ Polymer type data --------: 
 
 Number of polymerTypes: 32 
+(Note: gases are ordered as He, H2, O2, N2, CO2, CH4, C2H4, C2H6, C3H6, C3H8, C4H8,  n-C4H1, CF4, C2F6, C3F8 )
 
 Polymer Type: Carbon Molecular Sieves 
     Number of Polymers: 40 
-    Total Number of gas permeation values 114 
+    Total Number of gas permeation values: 114 
+    Total values per gas (ordered as in data): [ 8  0  8  8  8  0  2  3 39 38  0  0  0  0  0] 
+    Gas with highest number of permeation values: C3H6 
+    Number of values: 39 
 
 
 Polymer Type: Cellulosic Polymers 
     Number of Polymers: 25 
-    Total Number of gas permeation values 105 
+    Total Number of gas permeation values: 105 
+    Total values per gas (ordered as in data): [12 15 16 15 15 14  0  0  9  9  0  0  0  0  0] 
+    Gas with highest number of permeation values: O2 
+    Number of values: 16 
 
 
 Polymer Type: Conjugated Polymers (excl. subst. acetylenes/propynes) 
     Number of Polymers: 23 
-    Total Number of gas permeation values 98 
+    Total Number of gas permeation values: 98 
+    Total values per gas (ordered as in data): [ 7 13 23 22 23 10  0  0  0  0  0  0  0  0  0] 
+    Gas with highest number of permeation values: O2 
+    Number of values: 23 
 
 
 Polymer Type: High Temperature Polymers 
     Number of Polymers: 61 
-    Total Number of gas permeation values 263 
+    Total Number of gas permeation values: 263 
+    Total values per gas (ordered as in data): [37 40 53 47 46 37  0  1  0  1  0  1  0  0  0] 
+    Gas with highest number of permeation values: O2 
+    Number of values: 53 
 
 
 Polymer Type: Hydrocarbon Elastomers 
     Number of Polymers: 33 
-    Total Number of gas permeation values 131 
+    Total Number of gas permeation values: 131 
+    Total values per gas (ordered as in data): [23 21 28 29 19 11  0  0  0  0  0  0  0  0  0] 
+    Gas with highest number of permeation values: N2 
+    Number of values: 29 
 
 
 Polymer Type: Liquid Crystalline Polymers 
     Number of Polymers: 9 
-    Total Number of gas permeation values 45 
+    Total Number of gas permeation values: 45 
+    Total values per gas (ordered as in data): [9 9 9 9 9 0 0 0 0 0 0 0 0 0 0] 
+    Gas with highest number of permeation values: He 
+    Number of values: 9 
 
 
 Polymer Type: Mixed Matrix Membranes 
     Number of Polymers: 12 
-    Total Number of gas permeation values 24 
+    Total Number of gas permeation values: 24 
+    Total values per gas (ordered as in data): [0 0 0 4 9 5 0 0 3 3 0 0 0 0 0] 
+    Gas with highest number of permeation values: CO2 
+    Number of values: 9 
 
 
 Polymer Type: Parylenes 
     Number of Polymers: 12 
-    Total Number of gas permeation values 49 
+    Total Number of gas permeation values: 49 
+    Total values per gas (ordered as in data): [ 3 11 12 11 12  0  0  0  0  0  0  0  0  0  0] 
+    Gas with highest number of permeation values: O2 
+    Number of values: 12 
 
 
 Polymer Type: Perfluorinated Polymers 
     Number of Polymers: 17 
-    Total Number of gas permeation values 79 
+    Total Number of gas permeation values: 79 
+    Total values per gas (ordered as in data): [ 9 13 16 15 13 11  1  1  0  0  0  0  0  0  0] 
+    Gas with highest number of permeation values: O2 
+    Number of values: 16 
 
 
 Polymer Type: Poly(aryl ethers) and Poly(aryl ether ketones) 
     Number of Polymers: 94 
-    Total Number of gas permeation values 413 
+    Total Number of gas permeation values: 413 
+    Total values per gas (ordered as in data): [24 47 81 82 82 73  3  3  9  9  0  0  0  0  0] 
+    Gas with highest number of permeation values: N2 
+    Number of values: 82 
 
 
 Polymer Type: Polyamides and poly(amide-imides) 
     Number of Polymers: 50 
-    Total Number of gas permeation values 228 
+    Total Number of gas permeation values: 228 
+    Total values per gas (ordered as in data): [39  7 49 45 49 39  0  0  0  0  0  0  0  0  0] 
+    Gas with highest number of permeation values: O2 
+    Number of values: 49 
 
 
 Polymer Type: Polyarylates 
     Number of Polymers: 64 
-    Total Number of gas permeation values 324 
+    Total Number of gas permeation values: 324 
+    Total values per gas (ordered as in data): [51 20 64 64 64 61  0  0  0  0  0  0  0  0  0] 
+    Gas with highest number of permeation values: O2 
+    Number of values: 64 
 
 
 Polymer Type: Polycarbonates 
     Number of Polymers: 32 
-    Total Number of gas permeation values 172 
+    Total Number of gas permeation values: 172 
+    Total values per gas (ordered as in data): [29 18 32 32 32 29  0  0  0  0  0  0  0  0  0] 
+    Gas with highest number of permeation values: O2 
+    Number of values: 32 
 
 
 Polymer Type: Polyesters 
     Number of Polymers: 29 
-    Total Number of gas permeation values 99 
+    Total Number of gas permeation values: 99 
+    Total values per gas (ordered as in data): [18  1 25 17 24 14  0  0  0  0  0  0  0  0  0] 
+    Gas with highest number of permeation values: O2 
+    Number of values: 25 
 
 
 Polymer Type: Polyimides and Polypyrrolones 
     Number of Polymers: 325 
-    Total Number of gas permeation values 1411 
+    Total Number of gas permeation values: 1411 
+    Total values per gas (ordered as in data): [ 90 196 299 301 261 250   0   0   7   7   0   0   0   0   0] 
+    Gas with highest number of permeation values: N2 
+    Number of values: 301 
 
 
 Polymer Type: Polymers with High Free Volume 
     Number of Polymers: 103 
-    Total Number of gas permeation values 609 
+    Total Number of gas permeation values: 609 
+    Total values per gas (ordered as in data): [ 91 103 103 103  99 102   2   2   2   2   0   0   0   0   0] 
+    Gas with highest number of permeation values: H2 
+    Number of values: 103 
 
 
 Polymer Type: Polynorbornenes 
     Number of Polymers: 36 
-    Total Number of gas permeation values 173 
+    Total Number of gas permeation values: 173 
+    Total values per gas (ordered as in data): [15 19 31 31 29 30  0  8  0  7  0  3  0  0  0] 
+    Gas with highest number of permeation values: O2 
+    Number of values: 31 
 
 
 Polymer Type: Polyolefins 
     Number of Polymers: 26 
-    Total Number of gas permeation values 68 
+    Total Number of gas permeation values: 68 
+    Total values per gas (ordered as in data): [ 5  0 23 17 10  7  3  2  0  1  0  0  0  0  0] 
+    Gas with highest number of permeation values: O2 
+    Number of values: 23 
 
 
 Polymer Type: Polyphosphazenes 
     Number of Polymers: 27 
-    Total Number of gas permeation values 133 
+    Total Number of gas permeation values: 133 
+    Total values per gas (ordered as in data): [20 10 26 27 26 24  0  0  0  0  0  0  0  0  0] 
+    Gas with highest number of permeation values: N2 
+    Number of values: 27 
 
 
 Polymer Type: Polypropynes & Polyalkynes 
     Number of Polymers: 40 
-    Total Number of gas permeation values 244 
+    Total Number of gas permeation values: 245 
+    Total values per gas (ordered as in data): [28 36 36 38 36 40  0 11  0 11  0  6  1  1  1] 
+    Gas with highest number of permeation values: CH4 
+    Number of values: 40 
 
 
 Polymer Type: Polysulfones 
     Number of Polymers: 84 
-    Total Number of gas permeation values 418 
+    Total Number of gas permeation values: 418 
+    Total values per gas (ordered as in data): [63 37 79 79 82 74  0  0  2  2  0  0  0  0  0] 
+    Gas with highest number of permeation values: CO2 
+    Number of values: 82 
 
 
 Polymer Type: SIEF MMM 
     Number of Polymers: 10 
-    Total Number of gas permeation values 39 
+    Total Number of gas permeation values: 39 
+    Total values per gas (ordered as in data): [ 0  9  0 10 10 10  0  0  0  0  0  0  0  0  0] 
+    Gas with highest number of permeation values: N2 
+    Number of values: 10 
 
 
 Polymer Type: Silicone rubber and variants 
     Number of Polymers: 30 
-    Total Number of gas permeation values 133 
+    Total Number of gas permeation values: 134 
+    Total values per gas (ordered as in data): [13  2 27 16 14 15 14 14  2 14  1  0  0  1  1] 
+    Gas with highest number of permeation values: O2 
+    Number of values: 27 
 
 
 Polymer Type: Substituted Polyacetylenes 
     Number of Polymers: 82 
-    Total Number of gas permeation values 433 
+    Total Number of gas permeation values: 433 
+    Total values per gas (ordered as in data): [62 60 82 82 82 62  0  1  0  1  0  1  0  0  0] 
+    Gas with highest number of permeation values: O2 
+    Number of values: 82 
 
 
 Polymer Type: Thermally Rearranged Polymers 
     Number of Polymers: 24 
-    Total Number of gas permeation values 122 
+    Total Number of gas permeation values: 122 
+    Total values per gas (ordered as in data): [15 15 24 24 24 20  0  0  0  0  0  0  0  0  0] 
+    Gas with highest number of permeation values: O2 
+    Number of values: 24 
 
 
 Polymer Type: Uncategorised 
     Number of Polymers: 31 
-    Total Number of gas permeation values 176 
+    Total Number of gas permeation values: 176 
+    Total values per gas (ordered as in data): [31 21 31 31 31 31  0  0  0  0  0  0  0  0  0] 
+    Gas with highest number of permeation values: He 
+    Number of values: 31 
 
 
 Polymer Type: Uncategorized 
     Number of Polymers: 14 
-    Total Number of gas permeation values 28 
+    Total Number of gas permeation values: 28 
+    Total values per gas (ordered as in data): [ 0  0  0  6 14  8  0  0  0  0  0  0  0  0  0] 
+    Gas with highest number of permeation values: CO2 
+    Number of values: 14 
 
 
 Polymer Type: Upperbound 
     Number of Polymers: 1 
-    Total Number of gas permeation values 0 
+    Total Number of gas permeation values: 0 
+    Total values per gas (ordered as in data): [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] 
+    Gas with highest number of permeation values: He 
+    Number of values: 0 
 
 
 Polymer Type: Various Polymers 
     Number of Polymers: 30 
-    Total Number of gas permeation values 82 
+    Total Number of gas permeation values: 82 
+    Total values per gas (ordered as in data): [ 6  3 10  8  8  7  0  0 20 20  0  0  0  0  0] 
+    Gas with highest number of permeation values: C3H6 
+    Number of values: 20 
 
 
 Polymer Type: Vinyl and Vinylidene Polymers 
     Number of Polymers: 97 
-    Total Number of gas permeation values 403 
+    Total Number of gas permeation values: 403 
+    Total values per gas (ordered as in data): [50 44 89 82 82 53  1  0  1  1  0  0  0  0  0] 
+    Gas with highest number of permeation values: O2 
+    Number of values: 89 
 
 
 Polymer Type: Zeolites 
     Number of Polymers: 4 
-    Total Number of gas permeation values 8 
+    Total Number of gas permeation values: 8 
+    Total values per gas (ordered as in data): [0 0 0 0 0 0 0 0 4 4 0 0 0 0 0] 
+    Gas with highest number of permeation values: C3H6 
+    Number of values: 4 
 
 
 Polymer Type: Zeolitic Imidazolate Frameworks 
     Number of Polymers: 6 
-    Total Number of gas permeation values 12 
+    Total Number of gas permeation values: 12 
+    Total values per gas (ordered as in data): [0 0 0 0 0 0 0 0 6 6 0 0 0 0 0] 
+    Gas with highest number of permeation values: C3H6 
+    Number of values: 6 
 
 
 ------- Gas data ---------: 
