@@ -1,0 +1,278 @@
+------ Data available --------: 
+
+The clean gas permeation data is saved as a dictionary with keys given by the gas name. The values are an numpy array with columns including the polymer type, brief description, polymer, data values. The dictionary is at 
+
+                                 CSIROData(clean).npy 
+
+
+------ Polymer type data --------: 
+
+Number of polymerTypes: 32 
+
+Polymer Type: Carbon Molecular Sieves 
+    Number of Polymers: 40 
+    Total Number of gas permeation values 114 
+
+
+Polymer Type: Cellulosic Polymers 
+    Number of Polymers: 25 
+    Total Number of gas permeation values 105 
+
+
+Polymer Type: Conjugated Polymers (excl. subst. acetylenes/propynes) 
+    Number of Polymers: 23 
+    Total Number of gas permeation values 98 
+
+
+Polymer Type: High Temperature Polymers 
+    Number of Polymers: 61 
+    Total Number of gas permeation values 263 
+
+
+Polymer Type: Hydrocarbon Elastomers 
+    Number of Polymers: 33 
+    Total Number of gas permeation values 131 
+
+
+Polymer Type: Liquid Crystalline Polymers 
+    Number of Polymers: 9 
+    Total Number of gas permeation values 45 
+
+
+Polymer Type: Mixed Matrix Membranes 
+    Number of Polymers: 12 
+    Total Number of gas permeation values 24 
+
+
+Polymer Type: Parylenes 
+    Number of Polymers: 12 
+    Total Number of gas permeation values 49 
+
+
+Polymer Type: Perfluorinated Polymers 
+    Number of Polymers: 17 
+    Total Number of gas permeation values 79 
+
+
+Polymer Type: Poly(aryl ethers) and Poly(aryl ether ketones) 
+    Number of Polymers: 94 
+    Total Number of gas permeation values 413 
+
+
+Polymer Type: Polyamides and poly(amide-imides) 
+    Number of Polymers: 50 
+    Total Number of gas permeation values 228 
+
+
+Polymer Type: Polyarylates 
+    Number of Polymers: 64 
+    Total Number of gas permeation values 324 
+
+
+Polymer Type: Polycarbonates 
+    Number of Polymers: 32 
+    Total Number of gas permeation values 172 
+
+
+Polymer Type: Polyesters 
+    Number of Polymers: 29 
+    Total Number of gas permeation values 99 
+
+
+Polymer Type: Polyimides and Polypyrrolones 
+    Number of Polymers: 325 
+    Total Number of gas permeation values 1411 
+
+
+Polymer Type: Polymers with High Free Volume 
+    Number of Polymers: 103 
+    Total Number of gas permeation values 609 
+
+
+Polymer Type: Polynorbornenes 
+    Number of Polymers: 36 
+    Total Number of gas permeation values 173 
+
+
+Polymer Type: Polyolefins 
+    Number of Polymers: 26 
+    Total Number of gas permeation values 68 
+
+
+Polymer Type: Polyphosphazenes 
+    Number of Polymers: 27 
+    Total Number of gas permeation values 133 
+
+
+Polymer Type: Polypropynes & Polyalkynes 
+    Number of Polymers: 40 
+    Total Number of gas permeation values 244 
+
+
+Polymer Type: Polysulfones 
+    Number of Polymers: 84 
+    Total Number of gas permeation values 418 
+
+
+Polymer Type: SIEF MMM 
+    Number of Polymers: 10 
+    Total Number of gas permeation values 39 
+
+
+Polymer Type: Silicone rubber and variants 
+    Number of Polymers: 30 
+    Total Number of gas permeation values 133 
+
+
+Polymer Type: Substituted Polyacetylenes 
+    Number of Polymers: 82 
+    Total Number of gas permeation values 433 
+
+
+Polymer Type: Thermally Rearranged Polymers 
+    Number of Polymers: 24 
+    Total Number of gas permeation values 122 
+
+
+Polymer Type: Uncategorised 
+    Number of Polymers: 31 
+    Total Number of gas permeation values 176 
+
+
+Polymer Type: Uncategorized 
+    Number of Polymers: 14 
+    Total Number of gas permeation values 28 
+
+
+Polymer Type: Upperbound 
+    Number of Polymers: 1 
+    Total Number of gas permeation values 0 
+
+
+Polymer Type: Various Polymers 
+    Number of Polymers: 30 
+    Total Number of gas permeation values 82 
+
+
+Polymer Type: Vinyl and Vinylidene Polymers 
+    Number of Polymers: 97 
+    Total Number of gas permeation values 403 
+
+
+Polymer Type: Zeolites 
+    Number of Polymers: 4 
+    Total Number of gas permeation values 8 
+
+
+Polymer Type: Zeolitic Imidazolate Frameworks 
+    Number of Polymers: 6 
+    Total Number of gas permeation values 12 
+
+
+------- Gas data ---------: 
+
+Column: Polymer Type 
+    Number of data points: 1471 
+    Mean: nan 
+    std: nan 
+
+Column: nan 
+    Number of data points: 1101 
+    Mean: nan 
+    std: nan 
+
+Column: Polymer 
+    Number of data points: 1127 
+    Mean: nan 
+    std: nan 
+
+Column: He 
+    Number of data points: 758 
+    Mean: 559.662 
+    std: 1683.69 
+
+Column: H2 
+    Number of data points: 770 
+    Mean: 1426.45 
+    std: 4092.08 
+
+Column: O2 
+    Number of data points: 1276 
+    Mean: 393.574 
+    std: 1671.12 
+
+Column: N2 
+    Number of data points: 1255 
+    Mean: 260.03 
+    std: 1310.87 
+
+Column: CO2 
+    Number of data points: 1213 
+    Mean: 1682.56 
+    std: 5946.54 
+
+Column: CH4 
+    Number of data points: 1037 
+    Mean: 743.214 
+    std: 3450.02 
+
+Column: C2H4 
+    Number of data points: 26 
+    Mean: 1732.19 
+    std: 5707.93 
+
+Column: C2H6 
+    Number of data points: 46 
+    Mean: 3432.63 
+    std: 8242.56 
+
+Column: C3H6 
+    Number of data points: 104 
+    Mean: 229.654 
+    std: 864.196 
+
+Column: C3H8 
+    Number of data points: 136 
+    Mean: 1304.02 
+    std: 5341.45 
+
+Column: C4H8 
+    Number of data points: 1 
+    Mean: 32000 
+    std: 0 
+
+Column: n-C4H10 
+    Number of data points: 11 
+    Mean: 9665.45 
+    std: 12196 
+
+Column: CF4 
+    Number of data points: 1 
+    Mean: 3100 
+    std: 0 
+
+Column: C2F6 
+    Number of data points: 2 
+    Mean: 1295 
+    std: 1105 
+
+Column: C3F8 
+    Number of data points: 2 
+    Mean: 740 
+    std: 460 
+
+Column: nan 
+    Number of data points: 0 
+    Mean: nan 
+    std: nan 
+
+Column: nan 
+    Number of data points: 1465 
+    Mean: nan 
+    std: nan 
+
+Column: nan 
+    Number of data points: 1436 
+    Mean: nan 
+    std: nan 
+
